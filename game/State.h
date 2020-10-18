@@ -14,6 +14,8 @@ public:
     {
         std::list<std::string>* list;
         size_t selected;
+        size_t scrolled;
+        std::string* title;
     };
 
     // State types

@@ -5,9 +5,34 @@ using namespace lsoft::log;
 
 lsoft::MainMenu::MainMenu(IModel *model):
     IState(model),
-    _selected(0)
+    m_selected(0),
+    m_title("ГЛАВНОЕ МЕНЮ")
 {
-    _menu = {"New game",
+    m_menu = {"New game",
+             "1",
+             "2",
+             "3",
+             "4",
+             "5",
+             "6",
+             "7",
+             "8",
+             "9",
+             "10",
+             "11",
+             "12",
+             "13",
+             "14",
+             "15",
+             "16",
+             "17",
+             "18",
+             "19",
+             "20",
+             "21",
+             "22",
+             "23",
+             "24",
              "Settings",
              "Exit"};
 }
@@ -18,23 +43,19 @@ lsoft::MainMenu::~MainMenu()
 
 void lsoft::MainMenu::activated()
 {
-    Logger log("MainMenu::activated");
     // send change state event
     Event event;
-    log << "send notify 1";
     event.type = Event::CHANGE_STATE;
-    log << "send notify 2";
     event.changeState.type = State::MENU;
-    log << "send notify 3";
-    event.changeState.menu.list = &_menu;
-    log << "send notify 4";
-    event.changeState.menu.selected = _selected;
+    event.changeState.menu.list = &m_menu;
+    event.changeState.menu.selected = m_selected;
+    event.changeState.menu.title = &m_title;
+    event.changeState.menu.scrolled = m_scrolled;
     // notify
-    log << "send notify 5";
     notify(event);
 }
 
 void lsoft::MainMenu::onActionListener(const Action &action)
 {
-
+    (void)action;
 }

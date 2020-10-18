@@ -14,18 +14,18 @@ lsoft::IManager::~IManager()
 
 void lsoft::IManager::run()
 {
-    if(!_model)
+    if(!m_model)
         log::Logger::system().critical("Model not created");
-    if(!_view)
+    if(!m_view)
         log::Logger::system().critical("View not created");
     try{
-        _model->attach(_view.get());
-        _view->initialize();
-        _model->initialize();
-        _view->run();
-        _model->clean();
-        _view->clean();
-        _model->detach(_view.get());
+        m_model->attach(m_view.get());
+        m_view->initialize();
+        m_model->initialize();
+        m_view->run();
+        m_model->clean();
+        m_view->clean();
+        m_model->detach(m_view.get());
     }catch(Exception &e)
     {
         std::stringstream ss;

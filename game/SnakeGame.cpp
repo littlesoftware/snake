@@ -16,6 +16,7 @@ lsoft::SnakeGame::~SnakeGame()
 
 void lsoft::SnakeGame::onActionListener(const lsoft::Action& action)
 {
+    (void)action;
 }
 
 void lsoft::SnakeGame::initialize()
@@ -32,11 +33,11 @@ void lsoft::SnakeGame::clean()
 void lsoft::SnakeGame::gotoState(ModelStates state)
 {
     Logger log("SnakeGame::gotoState");
-    if(_states.find(state) == _states.end())
+    if(m_states.find(state) == m_states.end())
         return;
     log << "finded state";
-    _currentState = _states[state];
-    _currentState->activated();
+    m_currentState = m_states[state];
+    m_currentState->activated();
 }
 
 void lsoft::SnakeGame::onEventListener(const lsoft::Event &event)
@@ -47,6 +48,6 @@ void lsoft::SnakeGame::onEventListener(const lsoft::Event &event)
 
 void lsoft::SnakeGame::pushState(lsoft::ModelStates stateIndex, lsoft::IState *state)
 {
-    _states.insert( std::pair< ModelStates, std::shared_ptr<IState> >(stateIndex, std::shared_ptr<IState>(state) ) );
-    _states[stateIndex]->attach(this);
+    m_states.insert( std::pair< ModelStates, std::shared_ptr<IState> >(stateIndex, std::shared_ptr<IState>(state) ) );
+    m_states[stateIndex]->attach(this);
 }

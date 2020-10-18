@@ -11,17 +11,17 @@
 #undef ERROR
 #endif
 
-std::mutex lsoft::log::Logger::_mutex;
+std::mutex lsoft::log::Logger::m_mutex;
 
 lsoft::log::Logger::Logger(const std::string& name):
-    _name(name)
+    m_name(name)
 {
     beginSegment();
 }
 
 lsoft::log::Logger::~Logger()
 {
-    if(_segment)
+    if(m_segment)
         endSegment();
 }
 
@@ -103,8 +103,8 @@ lsoft::log::Logger &lsoft::log::Logger::system()
 }
 
 lsoft::log::Logger::Logger():
-    _segment(false),
-    _name("System")
+    m_segment(false),
+    m_name("System")
 {
 }
 
@@ -124,7 +124,7 @@ void lsoft::log::Logger::makeLog(const std::string& message, const Type type)
     if( flags & Flag::THREAD )
         printThreadId(output);
     if( flags & Flag::NAME )
-        output << _name << " ";
+        output << m_name << " ";
     if( flags & Flag::TYPE )
         output << stringOfLevel(type) << " ";
 
@@ -135,7 +135,7 @@ void lsoft::log::Logger::makeLog(const std::string& message, const Type type)
 
     // print message
     {
-        std::lock_guard<std::mutex> lockOutput(_mutex);
+        std::lock_guard<std::mutex> lockOutput(m_mutex);
         std::ostream& stream = type>=Type::ERROR ? options.error() : options.output();
         // if has coloring
         if(hasColor)

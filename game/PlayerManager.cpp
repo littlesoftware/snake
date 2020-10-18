@@ -5,8 +5,8 @@
 
 lsoft::PlayerManager::PlayerManager()
 {
-    _model = std::shared_ptr<IModel>( new SnakeGame() );
-    _view = std::shared_ptr<IView>( new ConsoleRender() );
+    m_model = std::shared_ptr<IModel>( new SnakeGame() );
+    m_view = std::shared_ptr<IView>( new ConsoleRender() );
 }
 
 lsoft::PlayerManager::~PlayerManager()

@@ -8,8 +8,8 @@ namespace lsoft {
 class IActionObserver
 {
 public:
-    IActionObserver() {}
-    virtual ~IActionObserver() {}
+    IActionObserver() = default;
+    virtual ~IActionObserver() = default;
 
     virtual void onActionListener(const Action& action) = 0;
 };

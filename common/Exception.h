@@ -18,7 +18,7 @@ public:
     virtual const char *what() const noexcept override;
 
 private:
-    std::string _message;
+    std::string m_message;
 };
 
 } // namespace lsoft

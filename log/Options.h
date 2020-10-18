@@ -72,11 +72,14 @@ public:
 private:
     Options();
 
-    Type _lowType;
-    uint32_t _flags;
-    std::ofstream _outputFile, _errorFile;
-    std::ostream* _output;
-    std::ostream* _error;
+    // --------------------------------------------------------------
+    // Member data
+    // --------------------------------------------------------------
+    Type m_lowType;
+    uint32_t m_flags;
+    std::ofstream m_outputFile, m_errorFile;
+    std::ostream* m_output;
+    std::ostream* m_error;
 };
 
 }} // namespace lsoft::log

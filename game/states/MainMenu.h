@@ -18,8 +18,14 @@ public:
     virtual void onActionListener(const Action& action) override;
 
 private:
-    std::list<std::string> _menu;
-    size_t _selected;
+
+    // --------------------------------------------------------------
+    // Member data
+    // --------------------------------------------------------------
+    std::list<std::string> m_menu;      // List of menu
+    size_t m_selected;                  // Selected item of menu
+    size_t m_scrolled;                  // Scrolled of menu
+    std::string m_title;                // Title of menu
 };
 
 } // namespace lsoft

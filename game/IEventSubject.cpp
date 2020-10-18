@@ -10,17 +10,17 @@ lsoft::IEventSubject::~IEventSubject()
 
 void lsoft::IEventSubject::attach(IEventObserver* observer)
 {
-    _observers.push_back(observer);
+    m_observers.push_back(observer);
 }
 
 void lsoft::IEventSubject::detach(IEventObserver* observer)
 {
-    _observers.remove(observer);
+    m_observers.remove(observer);
 }
 
 void lsoft::IEventSubject::notify(const Event& event)
 {
-    for(auto& it : _observers) {
+    for(auto& it : m_observers) {
         it->onEventListener(event);
     }
 }

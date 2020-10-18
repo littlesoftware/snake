@@ -10,82 +10,82 @@ lsoft::log::Options &lsoft::log::Options::instance()
 
 void lsoft::log::Options::setLowType(Type type)
 {
-    _lowType = type;
+    m_lowType = type;
 }
 
 lsoft::log::Type lsoft::log::Options::lowType() const
 {
-    return _lowType;
+    return m_lowType;
 }
 
 void lsoft::log::Options::setOutput(std::ostream &output)
 {
-    _output = &output;
+    m_output = &output;
 }
 
 void lsoft::log::Options::setOutput(std::ostream &output, std::ostream &error)
 {
-    _output = &output;
-    _error = &error;
+    m_output = &output;
+    m_error = &error;
 }
 
 void lsoft::log::Options::setOutputError(std::ostream &error)
 {
-    _error = &error;
+    m_error = &error;
 }
 
 std::ostream &lsoft::log::Options::output()
 {
-    return *_output;
+    return *m_output;
 }
 
 std::ostream &lsoft::log::Options::error()
 {
-    return *_error;
+    return *m_error;
 }
 
 void lsoft::log::Options::addFlag(uint32_t flag)
 {
-    _flags |= flag;
+    m_flags |= flag;
 }
 
 void lsoft::log::Options::removeFlag(uint32_t flag)
 {
-    _flags &= ~flag;
+    m_flags &= ~flag;
 }
 
 void lsoft::log::Options::setFlags(uint32_t flags)
 {
-    _flags = flags;
+    m_flags = flags;
 }
 
 uint32_t lsoft::log::Options::flags()
 {
-    return _flags;
+    return m_flags;
 }
 
 bool lsoft::log::Options::redirectToFile(const std::string &filename, bool append)
 {
-    _outputFile.open( filename, std::ios_base::out | (append?std::ios_base::app:std::ios_base::trunc) );
-    if( !_outputFile.is_open() )
+    m_outputFile.open( filename, std::ios_base::out | (append?std::ios_base::app:std::ios_base::trunc) );
+    if( !m_outputFile.is_open() )
         return false;
-    setOutput(_outputFile, _outputFile);
+    setOutput(m_outputFile, m_outputFile);
     return true;
 }
 
 bool lsoft::log::Options::redirectErrorToFile(const std::string &filename, bool append)
 {
-    _errorFile.open( filename, std::ios_base::out | (append?std::ios_base::app:std::ios_base::trunc) );
-    if( !_errorFile.is_open() )
+    m_errorFile.open( filename, std::ios_base::out | (append?std::ios_base::app:std::ios_base::trunc) );
+    if( !m_errorFile.is_open() )
         return false;
-    setOutputError(_errorFile);
+    setOutputError(m_errorFile);
     return true;
 }
 
 lsoft::log::Options::Options():
-    _lowType(Type::DEBUG),
-    _flags(Flag::DEFAULT),
-    _output(&std::cout),
-    _error(&std::cerr)
+    m_lowType(Type::DEBUG),
+    m_flags(Flag::DEFAULT),
+    m_output(&std::cout),
+    m_error(&std::cerr)
 {
 }

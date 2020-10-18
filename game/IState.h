@@ -10,13 +10,13 @@ namespace lsoft {
 class IState: public IEventSubject, public IActionObserver
 {
 public:
-    IState(IModel* model): _model(model) {}
-    virtual ~IState() {}
+    IState(IModel* model): m_model(model) {}
+    virtual ~IState() = default;
 
     virtual void activated() = 0;
 
 protected:
-    IModel* _model;
+    IModel* m_model;
 };
 
 } // namespace lsoft

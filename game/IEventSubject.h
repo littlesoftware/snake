@@ -19,7 +19,7 @@ public:
     void notify(const Event& event);
 
 private:
-    std::list<IEventObserver*> _observers;
+    std::list<IEventObserver*> m_observers;
 };
 
 } // namespace lsoft

@@ -28,7 +28,7 @@ include_directories(.)
 if ( WIN32 )
     list(APPEND PROJECT_LIBS pdcurses)
 else ( WIN32 )
-    list(APPEND PROJECT_LIBS ncurses panel)
+    list(APPEND PROJECT_LIBS ncursesw panelw)
 endif ( WIN32 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

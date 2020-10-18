@@ -6,8 +6,8 @@ namespace lsoft {
 class NoCopyable
 {
 protected:
-    NoCopyable() {}
-    ~NoCopyable() {}
+    NoCopyable() = default;
+    ~NoCopyable() = default;
 
 private:
     NoCopyable(const NoCopyable&) = delete;

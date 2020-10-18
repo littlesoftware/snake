@@ -85,10 +85,12 @@ private:
     inline void printDateTime(std::ostream &os, uint32_t flags);
     inline void printThreadId(std::ostream &os);
 
-    // variables
-    static std::mutex _mutex;
-    bool _segment{true};
-    std::string _name;
+    // --------------------------------------------------------------
+    // Member data
+    // --------------------------------------------------------------
+    static std::mutex m_mutex;
+    bool m_segment{true};
+    std::string m_name;
 };
 
 }} // namespace lsoft::log

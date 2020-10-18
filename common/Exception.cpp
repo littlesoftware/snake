@@ -2,12 +2,12 @@
 #include <stdarg.h>
 
 lsoft::Exception::Exception(std::string &&whatStr) noexcept:
-    _message(std::move(whatStr))
+    m_message(std::move(whatStr))
 {
 }
 
 lsoft::Exception::Exception(const std::string &whatStr) noexcept:
-    _message(whatStr)
+    m_message(whatStr)
 {
 }
 
@@ -27,5 +27,5 @@ lsoft::Exception lsoft::Exception::printf(const char* fmt, ...)
 
 const char *lsoft::Exception::what() const noexcept
 {
-    return _message.c_str();
+    return m_message.c_str();
 }

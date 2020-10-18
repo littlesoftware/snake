@@ -22,10 +22,12 @@ public:
     virtual void onEventListener(const Event& event) override;
 
 private:
-    std::map<ModelStates, std::shared_ptr<IState> > _states;
-    std::shared_ptr<IState> _currentState;
-
     inline void pushState(ModelStates stateIndex, IState* state);
+
+    // --------------------------------------------------------------
+    // Member data
+    std::map<ModelStates, std::shared_ptr<IState> > m_states;
+    std::shared_ptr<IState> m_currentState;
 };
 
 } // namespace lsoft

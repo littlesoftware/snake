@@ -8,8 +8,8 @@ namespace lsoft {
 class IEventObserver
 {
 public:
-    IEventObserver() {}
-    virtual ~IEventObserver() {}
+    IEventObserver() = default;
+    virtual ~IEventObserver() = default;
 
     virtual void onEventListener(const Event& event) = 0;
 };

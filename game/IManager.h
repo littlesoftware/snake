@@ -17,8 +17,8 @@ public:
     virtual void run();
 
 protected:
-    std::shared_ptr<IModel> _model;
-    std::shared_ptr<IView> _view;
+    std::shared_ptr<IModel> m_model;
+    std::shared_ptr<IView> m_view;
 };
 
 } // namespace lsoft

@@ -18,8 +18,8 @@ enum class ModelStates
 class IModel: public IEventSubject, public IActionObserver, public IEventObserver
 {
 public:
-    IModel() {}
-    virtual ~IModel() {}
+    IModel() = default;
+    virtual ~IModel() = default;
 
     virtual void initialize() = 0;
     virtual void clean() = 0;
