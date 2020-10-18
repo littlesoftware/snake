@@ -11,8 +11,9 @@ lsoft::Exception::Exception(const std::string &whatStr) noexcept:
 {
 }
 
-lsoft::Exception::~Exception()
+lsoft::Exception::~Exception() noexcept
 {
+
 }
 
 lsoft::Exception lsoft::Exception::printf(const char* fmt, ...)

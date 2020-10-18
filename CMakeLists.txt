@@ -12,6 +12,7 @@ set ( SOURCES
     game/PlayerManager.cpp
     game/SnakeGame.cpp
     game/states/MainMenu.cpp
+    game/states/SettingsMenu.cpp
     main.cpp
 )
 
