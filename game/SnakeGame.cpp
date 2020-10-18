@@ -1,5 +1,6 @@
 #include "SnakeGame.h"
 #include "states/MainMenu.h"
+#include "states/SettingsMenu.h"
 
 #include "log/Logger.h"
 
@@ -8,6 +9,7 @@ using namespace lsoft::log;
 lsoft::SnakeGame::SnakeGame()
 {
     pushState( ModelStates::MAIN_MENU, new MainMenu(this) );
+    pushState( ModelStates::SETTINGS_MENU, new SettingsMenu(this) );
 }
 
 lsoft::SnakeGame::~SnakeGame()
@@ -16,7 +18,7 @@ lsoft::SnakeGame::~SnakeGame()
 
 void lsoft::SnakeGame::onActionListener(const lsoft::Action& action)
 {
-    (void)action;
+    m_currentState->onActionListener(action);
 }
 
 void lsoft::SnakeGame::initialize()

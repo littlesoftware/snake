@@ -1,6 +1,7 @@
 #include "IManager.h"
 #include "log/Logger.h"
 #include "common/Exception.h"
+#include "Action.h"
 
 #include<sstream>
 
@@ -36,4 +37,13 @@ void lsoft::IManager::run()
     {
         log::Logger::system().critical("Unknown error");
     }
+}
+
+void lsoft::IManager::menuSelected(size_t selection, size_t scrolled)
+{
+    Action action;
+    action.type = Action::MENU_SELECTED;
+    action.menuSelected.scrolled = scrolled;
+    action.menuSelected.selected = selection;
+    m_model->onActionListener( action );
 }

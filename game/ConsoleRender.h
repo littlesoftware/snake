@@ -2,6 +2,7 @@
 #define LSOFT_CONSOLERENDER_H
 
 #include "IView.h"
+#include "IManager.h"
 
 #include "common/system.h"
 #if defined(LSOFT_POSIX)
@@ -16,7 +17,7 @@ namespace lsoft {
 class ConsoleRender: public IView
 {
 public:
-    ConsoleRender();
+    ConsoleRender(IManager& manager);
     virtual ~ConsoleRender();
 
     virtual void initialize() override;
@@ -30,31 +31,35 @@ private:
         WINDOW* overlay;
         WINDOW* decoration;
         PANEL* panel;
-        int width, height;  // work area
+        size_t width, height;  // work area
     };
     // color pairs
-    enum pairs
+    enum colorPairs
     {
         DEFAULT,
-        MENU_SELECT
+        MENU_SELECTION
     };
 
     void update();
     void draw();
     void keyEvent(int key);
-
-    inline void drawMenu();
-    inline void keyEventMenu(int key);
+    void drawMenu();
+    void keyEventMenu(int key);
+    void resizeMenu();
 
     // get working window for menu
     CursesWindow* getMenuWindow();
     // get characters of Utf8 String
     size_t getUtf8Length(const char* text);
+    // return true if the terminal change a size
+    bool isTerminalResized();
 
     // --------------------------------------------------------------
     // Member data
     // --------------------------------------------------------------
     State::Type m_state{State::UNKNOWN};
+    IManager* m_manager{nullptr};
+    bool m_running;
     // Menu data
     const std::list<std::string>* m_menuList;
     std::list<std::string>::const_iterator m_menuIt;

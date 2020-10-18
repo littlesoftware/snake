@@ -8,8 +8,8 @@ namespace lsoft {
 class IView: public IEventObserver
 {
 public:
-    IView() {}
-    virtual ~IView() {}
+    IView() = default;
+    virtual ~IView() = default;
 
     virtual void initialize() = 0;
     virtual void run() = 0;

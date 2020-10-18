@@ -9,13 +9,15 @@ struct Event
 {
     Event() = default;
     ~Event() = default;
+
     // --------------------------------------------------------------
     // Event type
     // --------------------------------------------------------------
     enum Type
     {
         UNKNOWN,
-        CHANGE_STATE        // data in -> changeState
+        CHANGE_STATE,       // data in -> changeState
+        EXIT
     };
 
     // Type of some event

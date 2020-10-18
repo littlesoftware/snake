@@ -16,6 +16,8 @@ public:
 
     virtual void run();
 
+    void menuSelected(size_t selection, size_t scrolled=0);
+
 protected:
     std::shared_ptr<IModel> m_model;
     std::shared_ptr<IView> m_view;
